@@ -10,19 +10,19 @@ def encrypt_caesar(plaintext):
     ''
     """
     ciphertext = ""
-    for i in range(len(plaintext)):
-        if plaintext[i] >= 'A' and plaintext[i] <= 'Z':
-            if ord(plaintext[i]) + 3 <= ord('Z'):
-                ciphertext += chr(ord(plaintext[i]) + 3)
+    for i in plaintext:
+        if i >= 'A' and i <= 'Z':
+            if ord(i) + 3 <= ord('Z'):
+                ciphertext += chr(ord(i) + 3)
             else:
-                ciphertext += chr((ord(plaintext[i]) + 3) % ord('Z') + ord('A') - 1)
-        elif plaintext[i] >= 'a' and plaintext[i] <= 'z':
-            if ord(plaintext[i]) + 3 <= ord('z'):
-                ciphertext += chr(ord(plaintext[i]) + 3)
+                ciphertext += chr((ord(i) + 3) % ord('Z') + ord('A') - 1)
+        elif i >= 'a' and i <= 'z':
+            if ord(i) + 3 <= ord('z'):
+                ciphertext += chr(ord(i) + 3)
             else:
-                ciphertext += chr((ord(plaintext[i]) + 3) % ord('z') + ord('a') - 1)
+                ciphertext += chr((ord(i) + 3) % ord('z') + ord('a') - 1)
         else:
-            ciphertext += plaintext[i]
+            ciphertext += i
     return ciphertext
 
 
@@ -38,17 +38,17 @@ def decrypt_caesar(ciphertext):
     ''
     """
     plaintext = ""
-    for i in range(len(ciphertext)):
-        if ciphertext[i] >= 'A' and ciphertext[i] <= 'Z':
-            if ord(ciphertext[i]) - 3 >= ord('A'):
-                plaintext += chr(ord(ciphertext[i]) - 3)
+    for i in ciphertext:
+        if i >= 'A' and i <= 'Z':
+            if ord(i) - 3 >= ord('A'):
+                plaintext += chr(ord(i) - 3)
             else:
-                plaintext += chr(ord('Z') - ord('A') + ord(ciphertext[i]) - 3 + 1)
-        elif ciphertext[i] >= 'a' and ciphertext[i] <= 'z':
-            if ord(ciphertext[i]) - 3 >= ord('a'):
-                plaintext += chr(ord(ciphertext[i]) - 3)
+                plaintext += chr(ord('Z') - ord('A') + ord(i) - 3 + 1)
+        elif i >= 'a' and i <= 'z':
+            if ord(i) - 3 >= ord('a'):
+                plaintext += chr(ord(i) - 3)
             else:
-                plaintext += chr(ord('z') - ord('a') + ord(ciphertext[i]) - 3 + 1)
+                plaintext += chr(ord('z') - ord('a') + ord(i) - 3 + 1)
         else:
-            plaintext += ciphertext[i]
+            plaintext += i
     return plaintext
