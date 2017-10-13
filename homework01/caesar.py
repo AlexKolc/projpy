@@ -9,7 +9,20 @@ def encrypt_caesar(plaintext):
     >>> encrypt_caesar("")
     ''
     """
-    # PUT YOUR CODE HERE
+    ciphertext = ""
+    for i in range(len(plaintext)):
+        if plaintext[i] >= 'A' and plaintext[i] <= 'Z':
+            if ord(plaintext[i]) + 3 <= ord('Z'):
+                ciphertext += chr(ord(plaintext[i]) + 3)
+            else:
+                ciphertext += chr((ord(plaintext[i]) + 3) % ord('Z') + ord('A') - 1)
+        elif plaintext[i] >= 'a' and plaintext[i] <= 'z':
+            if ord(plaintext[i]) + 3 <= ord('z'):
+                ciphertext += chr(ord(plaintext[i]) + 3)
+            else:
+                ciphertext += chr((ord(plaintext[i]) + 3) % ord('z') + ord('a') - 1)
+        else:
+            ciphertext += plaintext[i]
     return ciphertext
 
 
