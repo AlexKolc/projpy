@@ -31,6 +31,22 @@ def gcd(a, b):
             b %= a
     return a + b
 
+def multiplicative_inverse(e, phi):
+    """
+    >>> multiplicative_inverse(7, 40)
+    23
+    """
+    def gcd_extented(a, b):
+        if b == 0:
+            return a, 1, 0
+        else:
+            d, x, y = gcd_extented(b, a % b)
+            return d, y, x - y * (a // b)
+
+    d, x, y = gcd_extented(e, phi)
+    return x % phi
+
+
 def generate_keypair(p, q):
     if not (is_prime(p) and is_prime(q)):
         raise ValueError('Both numbers must be prime.')
